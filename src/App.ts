@@ -34,15 +34,6 @@ export class App {
     private privateRoutes() {
         /** Admin routes  */
         this.app.use('/api', accessLevelMiddleware.admin, routes.user)
-
-        /** Manager routes */
-        //routes
-
-        /** Student routes */
-        this.app.use('/api', accessLevelMiddleware.student, routes.lesson)
-
-        /** Stakeholder routes */
-        //routes
     }
 
     private routes() {
