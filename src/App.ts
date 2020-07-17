@@ -1,4 +1,5 @@
 import express, { Application } from 'express'
+import * as dotenv from 'dotenv'
 import cors from 'cors'
 import morgan from 'morgan'
 import * as routes from './routes'
@@ -9,6 +10,7 @@ export class App {
     private app: Application
 
     constructor() {
+        dotenv.config()
         this.app = express()
         this.settings()
         this.middlewares()
@@ -46,5 +48,6 @@ export class App {
     async listen(port: number | string) {
         await this.app.listen(port)
         console.log('Server on port', port)
+        console.log(`http://${process.env.DB_HOST || 'localhost'}:${port}/api`)
     }
 }
